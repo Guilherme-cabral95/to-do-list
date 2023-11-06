@@ -16,9 +16,15 @@ export class GoalService {
   private GoalRepository: Repository<Goal>,) {}
 
   async findOne(id:string) {
-    return await this.GoalRepository.findOne({where:{
+    const goal = await this.GoalRepository.findOne({where:{
       id:id
     }})
+
+    if(!goal){
+      return {message:"não foi encontrada a tarefa"}
+    }
+
+    return goal
   }
 
   async findAll(queryDto :QueryDTO){
