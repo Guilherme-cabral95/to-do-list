@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "bea1e78c-4efd-464d-8e81-326b7a9fc801",
+		"name": "testApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7932757",
+		"_collection_link": "https://galactic-resonance-501083-1.postman.co/workspace/tlantic~5f406831-dfa9-4f86-abfd-c12ece758070/collection/7932757-bea1e78c-4efd-464d-8e81-326b7a9fc801?action=share&source=collection_link&creator=7932757"
+	},
+	"item": [
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "genereteToken",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site}}/auth/generate_token",
+							"host": [
+								"{{site}}"
+							],
+							"path": [
+								"auth",
+								"generate_token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "goal",
+			"item": [
+				{
+					"name": "list_all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{site}}/goal/list_goals?page=1&limit=1&sort=data_criacao",
+							"host": [
+								"{{site}}"
+							],
+							"path": [
+								"goal",
+								"list_goals"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "data_criacao"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list_one",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{site}}/goal/search_goal/637c4684-84f1-4eef-985e-f84f62f68f6c",
+							"host": [
+								"{{site}}"
+							],
+							"path": [
+								"goal",
+								"search_goal",
+								"637c4684-84f1-4eef-985e-f84f62f68f6c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrf}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site}}/goal/deleted_goal/8404fe3f-746e-459b-b940-ca6bedface3a",
+							"host": [
+								"{{site}}"
+							],
+							"path": [
+								"goal",
+								"deleted_goal",
+								"8404fe3f-746e-459b-b940-ca6bedface3a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insert",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrf}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\":\"fazer comid12\",\r\n    \"descricao\":\"bolo de banana333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{site}}/goal/new_goal",
+							"host": [
+								"{{site}}"
+							],
+							"path": [
+								"goal",
+								"new_goal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{csrf}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"fazer comida\",\r\n    \"descricao\": \"texto3\",\r\n    \"concluido\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{site}}/goal/updated_goal/637c4684-84f1-4eef-985e-f84f62f68f6c",
+							"host": [
+								"{{site}}"
+							],
+							"path": [
+								"goal",
+								"updated_goal",
+								"637c4684-84f1-4eef-985e-f84f62f68f6c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "site",
+			"value": "localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "csrfToken",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
